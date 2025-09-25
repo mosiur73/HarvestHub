@@ -7,107 +7,75 @@ export function Footer() {
   return (
     <footer className="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Logo and App Downloads */}
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
-                <div className="grid grid-cols-2 gap-0.5">
-                  <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-                  <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-                  <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-                  <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-                </div>
-              </div>
-              <span className="text-xl font-bold text-gray-900">Fresh Harvests</span>
-            </div>
+       <div className="flex flex-col lg:flex-row lg:justify-between gap-12 px-4 py-8 max-w-7xl mx-auto">
 
-           
-
-          </div>
-
-          {/* Quick Links 1 */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-900">Quick links 1</h3>
-            <ul className="space-y-3">
-              <li>
-                <a href="#" className="text-gray-600 hover:text-green-600 transition-colors">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-green-600 transition-colors">
-                  Shop
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-green-600 transition-colors">
-                  About us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-green-600 transition-colors">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-green-600 transition-colors">
-                  Detail Blog
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Quick Links 2 */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-900">Quick links 2</h3>
-            <ul className="space-y-3">
-              <li>
-                <a href="#" className="text-gray-600 hover:text-green-600 transition-colors">
-                  Favorites
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-green-600 transition-colors">
-                  Cart
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-green-600 transition-colors">
-                  Sign In
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-green-600 transition-colors">
-                  Register
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Us */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-900">Contact us</h3>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <Phone className="w-4 h-4 text-gray-500" />
-                <span className="text-gray-600">1234 5678 90</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 text-gray-500" />
-                <span className="text-gray-600">Freshharvests@gmail.com</span>
-              </div>
-              <div className="flex items-start space-x-3">
-                <MapPin className="w-4 h-4 text-gray-500 mt-0.5" />
-                <span className="text-gray-600">Tanjung Sari Street, Pontianak, Indonesia</span>
-              </div>
-            </div>
-
-           
-          </div>
+  {/* Logo and App Downloads */}
+  <div className="space-y-4 flex-shrink-0">
+    <div className="flex items-center space-x-2">
+      <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
+        <div className="grid grid-cols-2 gap-0.5">
+          <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+          <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+          <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+          <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
         </div>
+      </div>
+      <span className="text-xl font-bold text-gray-900">Fresh Harvests</span>
+    </div>
+  </div>
+
+  {/* Quick Links & Contact */}
+  <div className="flex flex-row sm:flex-row lg:flex-row gap-8 w-full">
+    
+    {/* Quick Links 1 */}
+    <div className="space-y-4 flex-1">
+      <h3 className="text-lg font-semibold text-gray-900">Quick links 1</h3>
+      <ul className="space-y-3">
+        <li><a href="#" className="text-gray-600 hover:text-green-600 transition-colors">Home</a></li>
+        <li><a href="#" className="text-gray-600 hover:text-green-600 transition-colors">Shop</a></li>
+        <li><a href="#" className="text-gray-600 hover:text-green-600 transition-colors">About us</a></li>
+        <li><a href="#" className="text-gray-600 hover:text-green-600 transition-colors">Blog</a></li>
+        <li><a href="#" className="text-gray-600 hover:text-green-600 transition-colors">Detail Blog</a></li>
+      </ul>
+    </div>
+
+    {/* Quick Links 2 */}
+    <div className="space-y-4 flex-1">
+      <h3 className="text-lg font-semibold text-gray-900">Quick links 2</h3>
+      <ul className="space-y-3">
+        <li><a href="#" className="text-gray-600 hover:text-green-600 transition-colors">Favorites</a></li>
+        <li><a href="#" className="text-gray-600 hover:text-green-600 transition-colors">Cart</a></li>
+        <li><a href="#" className="text-gray-600 hover:text-green-600 transition-colors">Sign In</a></li>
+        <li><a href="#" className="text-gray-600 hover:text-green-600 transition-colors">Register</a></li>
+      </ul>
+    </div>
+
+    {/* Contact Us */}
+    <div className="space-y-4 flex-1">
+      <h3 className="text-lg font-semibold text-gray-900">Contact us</h3>
+      <div className="space-y-3">
+        <div className="flex items-center space-x-3">
+          <Phone className="w-4 h-4 text-gray-500" />
+          <span className="text-gray-600">1234 5678 90</span>
+        </div>
+        <div className="flex items-center space-x-3">
+          <Mail className="w-4 h-4 text-gray-500" />
+          <span className="text-gray-600">Fres@gmail.com</span>
+        </div>
+        <div className="flex items-start space-x-3">
+          <MapPin className="w-4 h-4 text-gray-500 mt-0.5" />
+          <span className="text-gray-600">Tanjung Sari Street, Pontianak, Indonesia</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
         {/* social link */}
-        <div className="flex justify-between">
+        <div className="flex flex-col-reverse lg:flex-row justify-between">
           {/* Download app */}
             <div className="space-y-3">
               <p className="text-gray-600 font-medium">Download App:</p>
@@ -132,7 +100,7 @@ export function Footer() {
                 </button>
               </div>
             </div>
-           <div className="space-y-3 pt-4">
+           <div className="space-y-3 pt-4 mb-4">
               <p className="text-sm font-medium text-gray-900">Accepted Payment Methods:</p>
               <div className="flex items-center space-x-4">
                 <SiVisa className="text-3xl" /> 
@@ -144,10 +112,10 @@ export function Footer() {
 
         {/* Bottom Section */}
         <div className="mt-12 pt-8 border-t border-gray-200">
-          <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+          <div className="flex flex-col-reverse lg:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <p className="text-gray-600 text-sm">© Copyright 2024, All Rights Reserved by Banana Studio</p>
 
-            <div className="flex items-center space-x-4">
+            <div className="flex  items-center space-x-4">
               <a
                 href="#"
                 className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors"
