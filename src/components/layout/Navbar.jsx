@@ -22,8 +22,8 @@ export function Navbar() {
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-gray-700 hover:text-green-600 font-medium">Home</a>
-            <a href="#" className="text-gray-700 hover:text-green-600 font-medium">Shop</a>
+            <a href="/" className="text-gray-700 hover:text-green-600 font-medium">Home</a>
+            <a href="/products" className="text-gray-700 hover:text-green-600 font-medium">products</a>
             <a href="#" className="text-gray-700 hover:text-green-600 font-medium">About us</a>
             <a href="#" className="text-gray-700 hover:text-green-600 font-medium">Blog</a>
           </div>
