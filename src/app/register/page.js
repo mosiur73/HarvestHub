@@ -57,7 +57,7 @@ export default function RegisterPage() {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <label htmlFor="">Full  Name</label>
+    
           <input
             type="text"
             name="fullName"
@@ -67,7 +67,7 @@ export default function RegisterPage() {
             required
             className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
           />
-          <label htmlFor="">Email</label>
+        
           <input
             type="email"
             name="email"
@@ -78,7 +78,7 @@ export default function RegisterPage() {
             className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
           />
           <div className="relative">
-            <label htmlFor="">Password</label>
+           
             <input
               type={showPassword ? "text" : "password"}
               name="password"
