@@ -1,41 +1,30 @@
 "use client";
 
 import { useState } from "react";
-import { useGetProductsQuery } from "../redux/apiSlice";
+import { useGetProductsQuery, useGetCategoriesQuery } from "../redux/apiSlice";
+import { useRouter } from "next/navigation";
 
 export default function ProductsPage() {
-  const { data, error, isLoading } = useGetProductsQuery();
-  const [activeCategory, setActiveCategory] = useState("All"); // Tab state
-  const [showAll, setShowAll] = useState(false); // Show all products flag
+  const { data: productsData, error: productError, isLoading: productLoading } = useGetProductsQuery();
+  const { data: categoryData, error: categoryError, isLoading: categoryLoading } = useGetCategoriesQuery();
+  const router = useRouter();
+  
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [showAll, setShowAll] = useState(false);
 
-  if (isLoading)
-    return <p className="text-center mt-20 text-xl">Loading...</p>;
-  if (error)
-    return (
-      <p className="text-center mt-20 text-red-500">
-        Error fetching products
-      </p>
-    );
+  if (productLoading || categoryLoading) return <p className="text-center mt-20 text-xl">Loading...</p>;
+  if (productError || categoryError) return <p className="text-center mt-20 text-red-500">Error fetching data</p>;
 
-  const products = data?.data || [];
+  const products = productsData?.data || [];
+  const categories = categoryData?.data || [];
 
-  // Filter products based on category tab
+  // Filter products by category
   const filteredProducts =
     activeCategory === "All"
       ? products
-      : products.filter((p) => {
-          if (!p.categoryId) return false;
-          if (activeCategory === "Fruits") return p.categoryId.includes("fruit");
-          if (activeCategory === "Vegetables")
-            return p.categoryId.includes("vegetable");
-          if (activeCategory === "Salad") return p.categoryId.includes("salad");
-          return true;
-        });
+      : products.filter((p) => p.categoryId === activeCategory);
 
-  // Limit 8 products initially
   const displayProducts = showAll ? filteredProducts : filteredProducts.slice(0, 8);
-
-  const categories = ["All", "Fruits", "Vegetables", "Salad"];
 
   return (
     <div className="max-w-7xl mx-auto text-center p-6">
@@ -44,26 +33,35 @@ export default function ProductsPage() {
       </span>
       <h2 className="text-3xl font-bold mb-4">Our Fresh Products</h2>
       <p className="text-gray-500 mb-8">
-        We pride ourselves on offering a wide variety of fresh and flavorful
-        fruits, vegetables, and salad ingredients.
+        We pride ourselves on offering a wide variety of fresh and flavorful fruits, vegetables, and salad ingredients.
       </p>
 
       {/* Category Tabs */}
-      <div className="flex justify-center gap-4 mb-8">
+      <div className="flex justify-center gap-4 mb-8 flex-wrap">
+        <button
+          onClick={() => {
+            setActiveCategory("All");
+            setShowAll(false);
+          }}
+          className={`px-4 py-2 rounded-full font-medium ${
+            activeCategory === "All" ? "bg-green-600 text-white" : "bg-gray-200 text-gray-800"
+          }`}
+        >
+          All
+        </button>
+
         {categories.map((cat) => (
           <button
-            key={cat}
+            key={cat.id}
             onClick={() => {
-              setActiveCategory(cat);
-              setShowAll(false); // reset showAll on category change
+              setActiveCategory(cat.id);
+              setShowAll(false);
             }}
             className={`px-4 py-2 rounded-full font-medium ${
-              activeCategory === cat
-                ? "bg-green-600 text-white"
-                : "bg-gray-200 text-gray-800"
+              activeCategory === cat.id ? "bg-green-600 text-white" : "bg-gray-200 text-gray-800"
             }`}
           >
-            {cat}
+            {cat.categoryName}
           </button>
         ))}
       </div>
@@ -81,21 +79,21 @@ export default function ProductsPage() {
               className="w-full h-56 object-cover"
             />
             <div className="p-5">
-              <h2 className="text-xl text-center font-semibold mb-2">
-                {product.productName}
-              </h2>
-              <p className="text-gray-800 text-center font-bold mt-3 text-lg">
-                ${product.price} / Kg
-              </p>
-              <button className="w-full border px-3 py-2 bg-gray-100 rounded-2xl mt-2">
-                Add to Cart
-              </button>
+              <h2 className="text-xl text-center font-semibold mb-2">{product.productName}</h2>
+              <p className="text-gray-800 text-center font-bold mt-3 text-lg">${product.price} / Kg</p>
+              {/* <button className="w-full border px-3 py-2 bg-gray-100 rounded-2xl mt-2">Add to Cart</button> */}
+              <button
+              onClick={() => router.push(`/products/${product.id}`)}
+              className="w-full border px-3 py-2 bg-gray-100 rounded-2xl mt-2"
+            >
+              Add to Cart
+            </button>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Show All Button */}
+      {/* View All Button */}
       {!showAll && filteredProducts.length > 8 && (
         <button
           onClick={() => setShowAll(true)}

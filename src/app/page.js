@@ -4,6 +4,7 @@ import { HeroBanner } from "@/components/banner";
 import OfferSection from "@/components/OfferSection";
 import TestimonialSlider from "@/components/Testimonial";
 import ProductsPage from "./products/page";
+import BlogSection from "@/components/Blog";
 
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
     <AboutSection></AboutSection>
     <OfferSection></OfferSection>
     <TestimonialSlider></TestimonialSlider>
+    <BlogSection></BlogSection>
    </div>
   );
 }

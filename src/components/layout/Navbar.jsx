@@ -1,10 +1,11 @@
-"use client"
-import { useState } from "react"
-import { Heart, ShoppingCart, Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
+"use client";
+import { useState } from "react";
+import { Heart, ShoppingCart, Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="bg-white shadow-sm border-b border-gray-100">
@@ -23,7 +24,7 @@ export function Navbar() {
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
             <a href="/" className="text-gray-700 hover:text-green-600 font-medium">Home</a>
-            <a href="/products" className="text-gray-700 hover:text-green-600 font-medium">products</a>
+            <a href="/products" className="text-gray-700 hover:text-green-600 font-medium">Products</a>
             <a href="#" className="text-gray-700 hover:text-green-600 font-medium">About us</a>
             <a href="#" className="text-gray-700 hover:text-green-600 font-medium">Blog</a>
           </div>
@@ -45,7 +46,12 @@ export function Navbar() {
                 </span>
               </button>
 
-              <Button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg">Sign in</Button>
+              {/* Sign in link */}
+              <Link href="/login">
+                <Button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg">
+                  Sign in
+                </Button>
+              </Link>
             </div>
 
             {/* Mobile: Hamburger + Cart */}
@@ -78,11 +84,16 @@ export function Navbar() {
                 <span className="text-sm font-medium">Favorites</span>
               </button>
 
-              <Button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg">Sign in</Button>
+              {/* Mobile Sign in */}
+              <Link href="/login">
+                <Button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg">
+                  Sign in
+                </Button>
+              </Link>
             </div>
           </div>
         )}
       </div>
     </nav>
-  )
+  );
 }
