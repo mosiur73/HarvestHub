@@ -1,11 +1,16 @@
 "use client";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Heart, ShoppingCart, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+
+  // Redux state থেকে cart আর favorites count আনলাম
+  const cartCount = useSelector((state) => state.cart.items.length);
+  const favCount = useSelector((state) => state.cart.favorites.length);
 
   return (
     <nav className="bg-white shadow-sm border-b border-gray-100">
@@ -14,36 +19,73 @@ export function Navbar() {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
-              <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+              <svg
+                className="w-5 h-5 text-white"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
                 <path d="M12 2L8 8h8l-4-6zm0 20l4-6H8l4 6zm-6-8L2 12l4-2v4zm12 0v-4l4 2-4 2z" />
               </svg>
             </div>
-            <span className="text-xl font-semibold text-gray-900">Fresh Harvests</span>
+            <span className="text-xl font-semibold text-gray-900">
+              Fresh Harvests
+            </span>
           </div>
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="/" className="text-gray-700 hover:text-green-600 font-medium">Home</a>
-            <a href="/products" className="text-gray-700 hover:text-green-600 font-medium">Products</a>
-            <a href="#" className="text-gray-700 hover:text-green-600 font-medium">About us</a>
-            <a href="#" className="text-gray-700 hover:text-green-600 font-medium">Blog</a>
+            <a
+              href="/"
+              className="text-gray-700 hover:text-green-600 font-medium"
+            >
+              Home
+            </a>
+            <a
+              href="/products"
+              className="text-gray-700 hover:text-green-600 font-medium"
+            >
+              Products
+            </a>
+            <a
+              href="#"
+              className="text-gray-700 hover:text-green-600 font-medium"
+            >
+              About us
+            </a>
+            <a
+              href="#"
+              className="text-gray-700 hover:text-green-600 font-medium"
+            >
+              Blog
+            </a>
           </div>
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-4">
             {/* Desktop actions */}
             <div className="hidden md:flex items-center space-x-4">
-              <button className="flex items-center space-x-1 text-gray-700 hover:text-green-600">
+              <button className="flex items-center space-x-1 text-gray-700 hover:text-green-600 relative">
                 <Heart className="w-5 h-5" />
-                <span className="hidden sm:inline text-sm font-medium">Favorites</span>
+                <span className="hidden sm:inline text-sm font-medium">
+                  Favorites
+                </span>
+                {favCount > 0 && (
+                  <span className="absolute -top-2 -right-3 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                    {favCount}
+                  </span>
+                )}
               </button>
 
               <button className="flex items-center space-x-1 text-gray-700 hover:text-green-600 relative">
                 <ShoppingCart className="w-5 h-5" />
-                <span className="hidden sm:inline text-sm font-medium">Cart</span>
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  1
+                <span className="hidden sm:inline text-sm font-medium">
+                  Cart
                 </span>
+                {cartCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                    {cartCount}
+                  </span>
+                )}
               </button>
 
               {/* Sign in link */}
@@ -58,12 +100,17 @@ export function Navbar() {
             <div className="flex md:hidden items-center space-x-6">
               <button className="relative text-gray-700 hover:text-green-600">
                 <ShoppingCart className="w-6 h-6" />
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  1
-                </span>
+                {cartCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                    {cartCount}
+                  </span>
+                )}
               </button>
 
-              <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 hover:text-green-600 focus:outline-none">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="text-gray-700 hover:text-green-600 focus:outline-none"
+              >
                 {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
@@ -73,15 +120,40 @@ export function Navbar() {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden mt-2 space-y-2">
-            <a href="#" className="block text-gray-700 hover:text-green-600 font-medium">Home</a>
-            <a href="#" className="block text-gray-700 hover:text-green-600 font-medium">Shop</a>
-            <a href="#" className="block text-gray-700 hover:text-green-600 font-medium">About us</a>
-            <a href="#" className="block text-gray-700 hover:text-green-600 font-medium">Blog</a>
+            <a
+              href="/"
+              className="block text-gray-700 hover:text-green-600 font-medium"
+            >
+              Home
+            </a>
+            <a
+              href="/products"
+              className="block text-gray-700 hover:text-green-600 font-medium"
+            >
+              Products
+            </a>
+            <a
+              href="#"
+              className="block text-gray-700 hover:text-green-600 font-medium"
+            >
+              About us
+            </a>
+            <a
+              href="#"
+              className="block text-gray-700 hover:text-green-600 font-medium"
+            >
+              Blog
+            </a>
 
             <div className="flex items-center space-x-4 mt-2">
-              <button className="flex items-center space-x-1 text-gray-700 hover:text-green-600">
+              <button className="flex items-center space-x-1 text-gray-700 hover:text-green-600 relative">
                 <Heart className="w-5 h-5" />
                 <span className="text-sm font-medium">Favorites</span>
+                {favCount > 0 && (
+                  <span className="absolute -top-2 -right-3 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                    {favCount}
+                  </span>
+                )}
               </button>
 
               {/* Mobile Sign in */}

@@ -37,16 +37,16 @@ export function HeroBanner() {
 
             {/* Special Offer Card */}
             <div className="relative">
-              <div className="bg-white rounded-2xl p-6 shadow-lg max-w-sm">
-                <div className="flex items-center space-x-4">
+              <div className="bg-white rounded-2xl  shadow-lg w-60 p-2 left-6">
+                <div className="flex items-center space-x-2">
                   <div className="flex-1">
-                    <p className="text-sm text-gray-500 mb-1">Special Offer</p>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Fresh Salad</h3>
-                    <p className="text-green-600 font-semibold mb-3">
+                    <p className="text-sm text-gray-500 ">Special Offer</p>
+                    <h3 className="text-xl font-bold text-gray-900 ">Fresh Salad</h3>
+                    <p className="text-green-600 font-semibold ">
                       Up to <span className="text-2xl font-bold">70%</span> off
                     </p>
                     <div className="bg-green-600 text-white px-3 py-1 rounded text-sm font-medium inline-block">
-                      CODE: FRESH25
+                      CODE:<span className="text-[#FAC714]">FRESH25</span>
                     </div>
                   </div>
                   <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0">

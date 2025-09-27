@@ -43,7 +43,7 @@ export default function ProductsPage() {
             setActiveCategory("All");
             setShowAll(false);
           }}
-          className={`px-4 py-2 rounded-full font-medium ${
+          className={`px-4 py-2 rounded-3xl font-medium ${
             activeCategory === "All" ? "bg-green-600 text-white" : "bg-gray-200 text-gray-800"
           }`}
         >
@@ -57,7 +57,7 @@ export default function ProductsPage() {
               setActiveCategory(cat.id);
               setShowAll(false);
             }}
-            className={`px-4 py-2 rounded-full font-medium ${
+            className={`px-4 py-2 rounded-xl font-medium ${
               activeCategory === cat.id ? "bg-green-600 text-white" : "bg-gray-200 text-gray-800"
             }`}
           >
@@ -76,7 +76,7 @@ export default function ProductsPage() {
             <img
               src={product.images[0]}
               alt={product.productName}
-              className="w-full h-56 object-cover"
+              className="w-full h-40 object-cover bg-gray-300"
             />
             <div className="p-5">
               <h2 className="text-xl text-center font-semibold mb-2">{product.productName}</h2>
