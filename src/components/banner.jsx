@@ -35,9 +35,17 @@ export function HeroBanner() {
               Shop Now
             </Button>
 
-            {/* Special Offer Card */}
+           
+          </div>
+
+       
+          
+        </div>
+         <div className="flex justify-between mt-3">
+          <div>
+             {/* Special Offer Card */}
             <div className="relative">
-              <div className="bg-white rounded-2xl  shadow-lg w-60 p-2 left-6">
+              <div className="bg-white rounded-2xl  shadow-lg w-60 p-2 lg:ml-16">
                 <div className="flex items-center space-x-2">
                   <div className="flex-1">
                     <p className="text-sm text-gray-500 ">Special Offer</p>
@@ -99,8 +107,7 @@ export function HeroBanner() {
               </div>
             </div>
           </div>
-
-          {/* Right Content - Image */}
+            {/* Right Content - Image */}
           <div className="relative">
             <div className="relative z-10">
               <Image
@@ -108,7 +115,7 @@ export function HeroBanner() {
                 alt="Girl with fresh vegetables"
                 width={600}
                 height={600}
-                className="w-full h-auto"
+                className="w-full  h-72 lg:h-96"
                 priority
               />
             </div>
